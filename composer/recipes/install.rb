@@ -9,8 +9,7 @@ node[:deploy].each do |application, deploy|
     cwd "#{deploy[:deploy_to]}/current"
     code <<-EOH
     curl -s https://getcomposer.org/installer | php
-    php composer.phar self-update
-    php composer.phar install --no-dev --no-interaction --optimize-autoloader
+    php composer.phar update --lock
     EOH
   end
 end 
